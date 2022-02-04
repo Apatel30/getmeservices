@@ -1,12 +1,16 @@
 package com.example.getmeservices.model;
 
+import com.example.getmeservices.validation.ValidName;
 import org.springframework.data.annotation.Id;
+
+import javax.validation.constraints.NotEmpty;
 
 public class Photo {
     @Id
     private String id;
     private String albumId;
     private String photoUrl;
+    @NotEmpty @ValidName
     private String createdBy;
     private String dateCreated;
 

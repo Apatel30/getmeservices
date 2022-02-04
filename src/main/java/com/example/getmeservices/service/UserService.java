@@ -33,10 +33,13 @@ public class UserService {
         userRepository.deleteById(userId);
     }
 
-    public List<User> getById(String id) {
+    public User getById(String userId) {
 
-        return userRepository.findAllById(id);
+        return userRepository.findById(userId).get();
     }
 
 
+    public List<User> getByName(String name) {
+       return userRepository.findAllByName(name);
+    }
 }

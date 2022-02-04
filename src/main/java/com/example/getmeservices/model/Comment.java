@@ -1,12 +1,18 @@
 package com.example.getmeservices.model;
 
+import com.example.getmeservices.validation.ValidName;
+import org.hibernate.validator.constraints.Length;
 import org.springframework.data.annotation.Id;
+
+import javax.validation.constraints.NotEmpty;
 
 public class Comment {
     @Id
     private String id;
     private String photoId;
+    @Length(min = 5)
     private String message;
+    @NotEmpty @ValidName
     private String createdBy;
     private String dateCreated;
 
