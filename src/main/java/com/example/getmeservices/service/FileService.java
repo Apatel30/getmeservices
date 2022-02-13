@@ -18,14 +18,14 @@ import java.io.IOException;
 @Service
 public class FileService {
     public boolean upload(MultipartFile file) {
-        BasicAWSCredentials credentials= new BasicAWSCredentials("AKIATJKPHITO5D4RXMTA", "W+5GvdNaHRXQTGFKvFZsLUde2vL0t81qQmwc+Yua");
+        BasicAWSCredentials credentials= new BasicAWSCredentials("Key", "Password");
         final AmazonS3 s3 = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(credentials)).withRegion(Regions.CA_CENTRAL_1).build();
         try {
 
             ObjectMetadata metadata = new ObjectMetadata();
             metadata.setContentLength(file.getSize());
             metadata.setContentType(file.getContentType());
-            s3.putObject("backend22", file.getOriginalFilename(), file.getInputStream(), metadata);
+            s3.putObject("objectname", file.getOriginalFilename(), file.getInputStream(), metadata);
             return true;
         } catch (AmazonServiceException | IOException e) {
            e.printStackTrace();
@@ -33,13 +33,13 @@ public class FileService {
         }
     }
     public S3Object getFile(String key){
-        BasicAWSCredentials credentials= new BasicAWSCredentials("AKIATJKPHITO5D4RXMTA", "W+5GvdNaHRXQTGFKvFZsLUde2vL0t81qQmwc+Yua");
+        BasicAWSCredentials credentials= new BasicAWSCredentials("key", "password");
         final AmazonS3 s3 = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(credentials)).withRegion(Regions.CA_CENTRAL_1).build();
-        return s3.getObject("backend22", key);
+        return s3.getObject("objectname", key);
     }
     public void deleteFile(String key){
-        BasicAWSCredentials credentials= new BasicAWSCredentials("AKIATJKPHITO5D4RXMTA", "W+5GvdNaHRXQTGFKvFZsLUde2vL0t81qQmwc+Yua");
+        BasicAWSCredentials credentials= new BasicAWSCredentials("key", "password");
         final AmazonS3 s3 = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(credentials)).withRegion(Regions.CA_CENTRAL_1).build();
-        s3.deleteObject("backend22", key);
+        s3.deleteObject("objectname", key);
     }
 }
