@@ -6,12 +6,12 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 public class User {
-    @Id
+
     private String id;
     private String name;
-    @Email
+
     private String email;
-    @NotEmpty
+
     private String profilephotoUrl;
 
 
