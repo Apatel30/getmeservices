@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api/albums")
 public class AlbumResource {
     @Autowired
@@ -36,7 +37,7 @@ public class AlbumResource {
         }
         return null;
     }
-
+    @CrossOrigin
     @GetMapping("/find")
     public List<Album> getById(@RequestParam(name = "id") String id){
        return albumService.getById(id);

@@ -9,6 +9,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api/comments")
 public class CommentResource {
     @Autowired
@@ -23,7 +24,7 @@ public class CommentResource {
     public List<Comment> getAllComments(){
         return commentService.getAllComments();
     }
-
+    @CrossOrigin
     @GetMapping("/find")
     public List<Comment> getById(@RequestParam(name = "id") String id){
         return commentService.getById(id);

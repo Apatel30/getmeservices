@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api/files")
 public class FileResource {
 
@@ -24,12 +25,14 @@ public class FileResource {
     public boolean upload(@RequestParam(name = "file") MultipartFile file ){
         return  fileService.upload(file);
     }
+    @CrossOrigin
     @GetMapping("/view")
     public void view(@RequestParam(name = "key") String key, HttpServletResponse response) throws IOException {
         S3Object object= fileService.getFile(key);
         response.setContentType(object.getObjectMetadata().getContentType());
         response.getOutputStream().write(object.getObjectContent().readAllBytes());
     }
+    @CrossOrigin
     @GetMapping("/download")
     public ResponseEntity<ByteArrayResource> download(@RequestParam(name = "key") String key) throws IOException {
         S3Object object = fileService.getFile(key);

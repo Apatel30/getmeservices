@@ -17,6 +17,7 @@ import java.util.List;
 
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api/users")
 public class UserResource {
 
@@ -41,7 +42,7 @@ public class UserResource {
     public List<User> getAllUsers(){
         return userService.getAllUsers();
     }
-
+    @CrossOrigin
      @GetMapping("/find")
     public List<User> getByName(@RequestParam("name")String name) throws restrictedInfoException {
          if(name.equalsIgnoreCase("root")){

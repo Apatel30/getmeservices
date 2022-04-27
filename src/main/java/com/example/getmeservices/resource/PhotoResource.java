@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api/photos")
 public class PhotoResource {
     @Autowired
@@ -24,7 +25,7 @@ public class PhotoResource {
     public List<Photo> getAllPhotos(){
         return photoService.getAllPhotos();
     }
-
+    @CrossOrigin
     @GetMapping("/find")
     public List<Photo> getById(@RequestParam(name = "id") String id){
         return photoService.getById(id);
